@@ -3,9 +3,19 @@ on: push
 jobs:
   lint:
     runs-on: ubuntu-latest
+    outputs:
+      NPMDIR: ${{ steps.npmDir.outputs.dir}}
     steps:
       - name: "Get code"
         uses: actions/checkout@v4
+      - name: Get npm cache directory
+        id: npmDir
+        run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
+      - name: Caching dependencies
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.npmDir.outputs.dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json')}}
       - name: "Install dependencies"
         run: npm i
       - name: "Lint"
@@ -44,5 +54,8 @@ jobs:
         run: echo "$OUTPUT_1"
       - name: Displaying context
         run: echo "${{ tojson(needs)}}"
+      
+           
+
 
         
