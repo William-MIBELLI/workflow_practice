@@ -35,7 +35,7 @@ jobs:
             /dist
             package.json
   getting_oupout:
-    runs-on: ubunut-latest
+    runs-on: ubuntu-latest
     needs: build
     env:
       OUTPUT_1: ${{ needs.build.outputs.script}}
