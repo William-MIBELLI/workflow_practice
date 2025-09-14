@@ -19,4 +19,7 @@ jobs:
       - name: "Install dependencies"
         run: npm i
       - name: "Build"
-        run: npm build
+        run: npm run build 
+      - name: "User notification"
+        run: echo "Build done."
+        
