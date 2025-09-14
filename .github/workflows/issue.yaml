@@ -7,4 +7,4 @@ jobs:
       - name: "Prompt shell"
         run: echo "Issue detected"
       - name: Display Github context
-        run: ${{ github }}
+        run: echo ${{ toJson(github) }}
