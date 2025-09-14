@@ -42,5 +42,7 @@ jobs:
     steps:
       - name: display output value
         run: echo "$OUTPUT_1"
+      - name: Displaying context
+        run: echo "${{ tojson(needs)}}"
 
         
