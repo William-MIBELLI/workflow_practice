@@ -16,7 +16,7 @@ jobs:
         with:
           path: ${{ steps.npmDir.outputs.dir }}
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json')}}
-      - name: "Install dependencies"
+      - name: Install dependencies
         run: npm i
       - name: "Lint"
         run: npm run lint
