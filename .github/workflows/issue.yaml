@@ -1,0 +1,8 @@
+name: "Issues"
+on: issues
+jobs:
+  shelling:
+    runs-on: ubuntu@latest
+    steps:
+      - name: "Prompte shell"
+        run: echo "Issue detected"
