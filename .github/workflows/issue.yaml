@@ -6,3 +6,5 @@ jobs:
     steps:
       - name: "Prompt shell"
         run: echo "Issue detected"
+      - name: Display Github context
+        run: echo  ${{ github }}
