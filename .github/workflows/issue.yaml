@@ -8,4 +8,17 @@ jobs:
         run: echo "Issue detected"
       - name: Display Github context
         run: echo "${{ toJson(github) }}"
-      
+      - name: Get npm cache directory
+        id: npmDir
+        run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
+      - name: Caching dependencies
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.npmDir.outputs.dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json')}}
+          restore-keys: |
+            ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json')}}
+            ${{ runner.os }}-node-
+            ${{ runner.os }}
+      - name: Install dependencies
+        run: npm i
