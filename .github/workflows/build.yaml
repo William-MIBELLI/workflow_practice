@@ -71,6 +71,12 @@ jobs:
         run: echo "$OUTPUT_1"
       - name: Displaying context
         run: echo "${{ tojson(needs)}}"
+  deployment:
+    uses: "./.github/workflows/reusable.yaml"
+    with: 
+        os: ubuntu-latest
+
+
       
            
 

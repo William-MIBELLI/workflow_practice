@@ -1,0 +1,18 @@
+name: Reusable Workflow
+
+on: 
+  workflow_call:
+    inputs:
+      os:
+        required: true
+        description: the OS where deploy is running
+        type: string
+
+jobs:
+  deploy:
+    runs-on: ${{ inputs.os }}
+    steps:
+      - name: Get code
+        uses: actions/checkout@v4
+      - name: Dummy deployment
+        run: echo "Deployment OK"
