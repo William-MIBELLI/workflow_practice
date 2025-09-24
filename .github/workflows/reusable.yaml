@@ -7,12 +7,20 @@ on:
         required: true
         description: the OS where deploy is running
         type: string
+    outputs:
+      chat:
+        value: ${{ jobs.deploy.outputs.chat }}
 
 jobs:
   deploy:
+    outputs:
+      chat: ${{ steps.genout.outputs.prenom }}
     runs-on: ${{ inputs.os }}
     steps:
       - name: Get code
         uses: actions/checkout@v4
+      - name: Generate ouput
+        id: genout
+        run: echo "prenom=saucisson" >> $GITHUB_OUTPUT
       - name: Dummy deployment
         run: echo "Deployment OK"

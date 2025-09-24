@@ -75,6 +75,12 @@ jobs:
     uses: "./.github/workflows/reusable.yaml"
     with: 
         os: ubuntu-latest
+  testingOutput:
+    runs-on: ubuntu-latest
+    needs: [deployment]
+    steps:
+      - name: Display output
+        run: echo ${{ needs.deployment.outputs.chat }}
 
 
       
