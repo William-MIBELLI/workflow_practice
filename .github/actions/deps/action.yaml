@@ -28,5 +28,5 @@ runs:
       shell: bash
     - name: "Output cat name"
       id: catname
-      run: echo 'catname=saucisson' >> ${GITHUB_OUPUT}
-      shell: powershell
+      run: echo 'catname=saucisson' >> $env:GITHUB_OUPUT
+      shell: bash
