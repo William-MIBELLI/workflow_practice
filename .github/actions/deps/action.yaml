@@ -1,9 +1,9 @@
 name: Dependencies action
 description: "Install and cache dependencies"
 outputs:
-  catname:
+  dog:
     description: "Le nom du chat"
-    value: ${{ steps.catname.outputs.name }}
+    value: ${{ steps.catname.outputs.dogname }}
   npmDir:
     description: "NPM Directory"
     value: ${{ steps.npmDir.outputs.dir }}
@@ -31,5 +31,5 @@ runs:
       shell: bash
     - name: "Output cat name"
       id: catname
-      run: echo 'name=saucisson' >> $env:GITHUB_OUPUT
+      run: echo "::set-ouput name=dogname::saucisson"
       shell: bash
