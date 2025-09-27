@@ -25,4 +25,4 @@ runs:
     - name: "Output cat name"
       id: wiwi
       run: echo "dogname=saucisson" >> $GITHUB_OUPUT
-      shell: powershell
+      shell: cmd
