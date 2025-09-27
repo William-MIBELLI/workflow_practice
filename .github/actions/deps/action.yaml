@@ -31,5 +31,5 @@ runs:
       shell: bash
     - name: "Output cat name"
       id: catname
-      run: echo 'name=saucisson' >> ${GITHUB_OUPUT}
+      run: echo 'name=saucisson' >> $env:GITHUB_OUPUT
       shell: bash
