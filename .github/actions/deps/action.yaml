@@ -3,7 +3,10 @@ description: "Install and cache dependencies"
 outputs:
   catname:
     description: "Le nom du chat"
-    value: ${{ steps.catname.outputs.catname }}
+    value: ${{ steps.catname.outputs.name }}
+  npmDir:
+    description: "NPM Directory"
+    value: ${{ steps.npmDir.outputs.dir }}
 runs:
   using: composite
   steps:
@@ -28,5 +31,5 @@ runs:
       shell: bash
     - name: "Output cat name"
       id: catname
-      run: echo 'catname=saucisson' >> $env:GITHUB_OUPUT
+      run: echo 'name=saucisson' >> ${GITHUB_OUPUT}
       shell: bash
