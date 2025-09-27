@@ -28,5 +28,5 @@ runs:
       shell: bash
     - name: "Output cat name"
       id: catname
-      run: echo"name=saucisson" >> $GITHUB_OUPUTS
+      run: echo"name=saucisson" >> $GITHUB_OUPUT
       shell: bash
