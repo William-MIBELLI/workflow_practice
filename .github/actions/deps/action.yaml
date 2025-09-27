@@ -2,22 +2,15 @@ name: Dependencies action
 description: "Install and cache dependencies"
 outputs:
   dog:
-    description: "Le nom du chat"
-    value: ${{ steps.catname.outputs.dogname }}
-  npmDir:
-    description: "NPM Directory"
-    value: ${{ steps.npmDir.outputs.dir }}
+    description: "Le nom du du chien"
+    value: ${{ steps.wiwi.outputs.dogname }}
 runs:
   using: composite
   steps:
-    - name: Get npm cache directory
-      id: npmDir
-      run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
-      shell: bash
     - name: Caching dependencies
       uses: actions/cache@v4
       with:
-        path: ${{ steps.npmDir.outputs.dir }}
+        path: ~/.npm
         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json')}}
         restore-keys: |
           ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json')}}
@@ -30,6 +23,6 @@ runs:
       run: echo 'Caching from custom actions DONE!'
       shell: bash
     - name: "Output cat name"
-      id: catname
-      run: echo "::set-ouput name=dogname::'saucisson'"
+      id: wiwi
+      run: echo "dogname=saucisson" >> $GITHUB_OUPUT
       shell: bash
