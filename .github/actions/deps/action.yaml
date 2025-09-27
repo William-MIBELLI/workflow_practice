@@ -31,5 +31,5 @@ runs:
       shell: bash
     - name: "Output cat name"
       id: catname
-      run: echo "::set-ouput name=dogname::saucisson"
+      run: echo "::set-ouput name=dogname::'saucisson'"
       shell: bash
