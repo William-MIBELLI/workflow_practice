@@ -1,0 +1,24 @@
+name: Dependencies action
+description: "Install and cache dependencies"
+runs:
+  using: composite
+  steps:
+    - name: Get npm cache directory
+      id: npmDir
+      run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
+      shell: bash
+    - name: Caching dependencies
+      uses: actions/cache@v4
+      with:
+        path: ${{ steps.npmDir.outputs.dir }}
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json')}}
+        restore-keys: |
+          ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json')}}
+          ${{ runner.os }}-node-
+          ${{ runner.os }}
+    - name: "Install dependencies"
+      run: npm i
+      shell: bash
+    - name: "Notice user"
+      run: echo 'Caching from custom actions DONE!'
+      shell: bash

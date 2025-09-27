@@ -33,20 +33,8 @@ jobs:
     steps:
       - name: "Get code"
         uses: actions/checkout@v4
-      - name: Get npm cache directory
-        id: npmDir
-        run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
-      - name: Caching dependencies
-        uses: actions/cache@v4
-        with:
-          path: ${{ steps.npmDir.outputs.dir }}
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json')}}
-          restore-keys: |
-            ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json')}}
-            ${{ runner.os }}-node-
-            ${{ runner.os }}
-      - name: "Install dependencies"
-        run: npm i
+      - name: "Install and cache dependencies"
+        uses: ./.github/actions/deps
       - name: "Build"
         run: npm run build 
       - name: "User notification"
@@ -81,6 +69,17 @@ jobs:
     steps:
       - name: Display output
         run: echo ${{ needs.deployment.outputs.chat }}
+  container-test:
+    runs-on: ubuntu-latest
+    container:
+      image: node:16
+    services:
+      db:
+        image: postgres
+        env:
+          POSTGRES_PASSWORD: example
+        
+
 
 
       
