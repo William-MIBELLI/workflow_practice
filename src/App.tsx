@@ -6,13 +6,6 @@ import './App.css'
 function App() {
   const [count, setCount] = useState(0)
 
-  const map: { x: number; y: number; type: string }[][] = [[]]
-  
-  map[0].push({
-    type: "u",
-    x: 2,
-    y: 4
-  })
   return (
     <>
       <div>

@@ -1,5 +1,9 @@
 name: Dependencies action
 description: "Install and cache dependencies"
+outputs:
+  name:
+    description: "Le nom du chat"
+    value: ${{ steps.catname.outputs.name }}
 runs:
   using: composite
   steps:
@@ -21,4 +25,8 @@ runs:
       shell: bash
     - name: "Notice user"
       run: echo 'Caching from custom actions DONE!'
+      shell: bash
+    - name: "Output cat name"
+      id: catname
+      run: echo"name=saucisson" >> $GITHUB_OUPUTS
       shell: bash
