@@ -10,7 +10,7 @@ jobs:
         id: deps
         uses: ./.github/actions/deps
       - name: "Echo ouput action"
-        run: echo ${{ steps.deps.outputs.name }}
+        run: echo ${{ steps.deps.outputs.catname }}
       - name: "Lint"
         run: npm run lint
   build:

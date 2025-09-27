@@ -1,9 +1,9 @@
 name: Dependencies action
 description: "Install and cache dependencies"
 outputs:
-  name:
+  catname:
     description: "Le nom du chat"
-    value: ${{ steps.catname.outputs.name }}
+    value: ${{ steps.catname.outputs.catname }}
 runs:
   using: composite
   steps:
@@ -28,5 +28,5 @@ runs:
       shell: bash
     - name: "Output cat name"
       id: catname
-      run: echo"name=saucisson" >> $GITHUB_OUPUT
+      run: echo 'catname=saucisson' >> $GITHUB_OUPUT
       shell: bash
