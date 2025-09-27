@@ -69,15 +69,7 @@ jobs:
     steps:
       - name: Display output
         run: echo ${{ needs.deployment.outputs.chat }}
-  container-test:
-    runs-on: ubuntu-latest
-    container:
-      image: node:16
-    services:
-      db:
-        image: postgres
-        env:
-          POSTGRES_PASSWORD: example
+
         
 
 
