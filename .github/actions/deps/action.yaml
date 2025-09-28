@@ -27,5 +27,5 @@ runs:
       run: echo "dogname=saucisson" >> $env:GITHUB_OUPUT
       shell: bash
     - name: "Echo output from custom action"
-      run: echo "${{ steps.wiwi.outputs.dogname }}"
+      run: echo " dogname from action ${{ steps.wiwi.outputs.dogname }}"
       shell: bash
